@@ -1,0 +1,17 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Crescent Moon -->
+  <path d="M200 10 A70 70 0 1 0 200 150 A55 55 0 1 1 200 10" fill="#004d40" />
+  
+  <!-- Arabic Calligraphy (Simplified representation) -->
+  <text x="200" y="70" font-family="serif" font-size="30" fill="#d4af37" text-anchor="middle" style="font-style: italic;">نور هدى</text>
+  
+  <!-- Open Book (Quran) -->
+  <path d="M160 110 Q200 90 240 110 L240 140 Q200 120 160 140 Z" fill="#d4af37" />
+  <path d="M200 110 L200 140" stroke="#004d40" stroke-width="2" />
+  
+  <!-- Main Text -->
+  <text x="200" y="175" font-family="'Playfair Display', serif" font-size="32" font-weight="bold" fill="#d4af37" text-anchor="middle">Noore Huda</text>
+  
+  <!-- Tagline -->
+  <text x="200" y="195" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#002147" text-anchor="middle" letter-spacing="2">ONLINE QURAN ACADEMY</text>
+</svg>
