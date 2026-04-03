@@ -44,13 +44,11 @@ header { position: sticky; top: 0; background-color: var(--white); border-bottom
 
 /* Hero Slider */
 .hero { position: relative; height: calc(100vh - 80px); min-height: 500px; overflow: hidden; }
-.slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; background-size: cover; background-position: center; }
-.slide.active { opacity: 1; }
+.hero-static { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
 .slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.55); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
 .slide-content { max-width: 800px; }
 .slide-title { color: var(--white); font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
 .slide-subtitle { color: var(--bg-cream); font-size: 1.2rem; margin-bottom: 30px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-.slider-dots { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
 .dot { width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer; transition: background-color 0.3s; }
 .dot.active { background-color: var(--accent); }
 
