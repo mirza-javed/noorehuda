@@ -21,5 +21,14 @@ export default defineConfig(({mode}) => {
       allowedHosts: true,
       hmr: process.env.DISABLE_HMR !== 'true',
     },
+    build: {
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          about: path.resolve(__dirname, 'about.html'),
+          droos: path.resolve(__dirname, 'droos.html'),
+        },
+      },
+    },
   };
 });

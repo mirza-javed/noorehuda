@@ -11,39 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Hero Slider
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  let currentSlide = 0;
-  let slideInterval;
-
-  if (slides.length > 0) {
-    const nextSlide = () => {
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-    };
-
-    const goToSlide = (index) => {
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-      currentSlide = index;
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-    };
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        clearInterval(slideInterval);
-        goToSlide(index);
-        slideInterval = setInterval(nextSlide, 5000);
-      });
-    });
-
-    slideInterval = setInterval(nextSlide, 5000);
-  }
 
   // Lightbox for Classes
   const classCards = document.querySelectorAll('.class-card');
@@ -101,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!field.value.trim()) {
           isValid = false;
           if (errorElement) errorElement.style.display = 'block';
-          field.style.borderColor = '#d9534f';
+          field.classList.add('has-error');
         } else {
           if (errorElement) errorElement.style.display = 'none';
-          field.style.borderColor = '#ddd';
+          field.classList.remove('has-error');
         }
       });
 
@@ -132,22 +99,4 @@ Message: ${message}`;
     });
   }
 
-  // Lazy loading background images
-  if ('IntersectionObserver' in window) {
-    const lazyBackgrounds = document.querySelectorAll('.lazy-bg');
-    const bgObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const lazyBg = entry.target;
-          lazyBg.style.backgroundImage = `url(${lazyBg.dataset.bg})`;
-          lazyBg.classList.remove('lazy-bg');
-          observer.unobserve(lazyBg);
-        }
-      });
-    });
-
-    lazyBackgrounds.forEach(lazyBg => {
-      bgObserver.observe(lazyBg);
-    });
-  }
 });

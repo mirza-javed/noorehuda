@@ -51,8 +51,7 @@ header { position: sticky; top: 0; background-color: var(--white); border-bottom
 .hero-ayat-translation { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--white); direction: ltr; display: block; margin-top: 6px; letter-spacing: 0.5px; opacity: 0.95; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
 .slide-title { color: var(--white); font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
 .slide-subtitle { color: var(--bg-cream); font-size: 1.2rem; margin-bottom: 30px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-.dot { width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer; transition: background-color 0.3s; }
-.dot.active { background-color: var(--accent); }
+
 
 /* Sections */
 .section { padding: 80px 0; }
@@ -73,15 +72,16 @@ header { position: sticky; top: 0; background-color: var(--white); border-bottom
 .mission-text { font-size: 1.1rem; border-left: 4px solid var(--accent); padding-left: 20px; }
 
 /* Classes Section */
-.classes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.class-card { background-color: var(--white); border-radius: 10px; overflow: hidden; border-top: 4px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; color: var(--text); }
+.classes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+.class-card { background-color: var(--white); border-radius: 10px; overflow: hidden; border-top: 4px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; color: var(--text); display: flex; flex-direction: column; }
 .class-card:hover { transform: scale(1.03); }
-.class-img { width: 100%; height: 200px; object-fit: cover; }
-.class-content { padding: 20px; }
-.class-badge { display: inline-block; background-color: var(--bg-cream); color: var(--primary); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; }
-.class-title { font-size: 1.2rem; margin-bottom: 5px; }
-.class-arabic { font-family: var(--font-arabic); color: var(--accent); font-size: 1.2rem; margin-bottom: 10px; }
-.class-desc { font-size: 0.9rem; color: #555; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.class-img { width: 100%; height: 250px; object-fit: cover; }
+.class-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+.class-badge { display: inline-block; background-color: var(--bg-cream); color: var(--primary); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; align-self: flex-start; }
+.class-title { font-size: 1.4rem; margin-bottom: 5px; }
+.class-arabic { font-family: var(--font-arabic); color: var(--accent); font-size: 1.3rem; margin-bottom: 15px; }
+.class-desc { font-size: 1.1rem; color: #555; margin-bottom: 25px; flex-grow: 1; line-height: 1.7; }
+.class-btn-wrapper { margin-top: auto; text-align: left; }
 
 /* Fee Structure */
 .fee-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -118,6 +118,7 @@ header { position: sticky; top: 0; background-color: var(--white); border-bottom
 .form-label { display: block; margin-bottom: 8px; font-weight: 500; }
 .form-control { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 5px; font-family: var(--font-body); font-size: 1rem; }
 .form-control:focus { outline: none; border-color: var(--primary); }
+.form-control.has-error { border-color: #d9534f; }
 textarea.form-control { resize: vertical; min-height: 100px; }
 .form-error { color: #d9534f; font-size: 0.85rem; margin-top: 5px; display: none; }
 .btn-submit { width: 100%; font-size: 1.1rem; padding: 15px; }
@@ -184,7 +185,7 @@ footer { background-color: var(--dark); color: var(--white); padding: 60px 0 20p
   .nav-links { gap: 10px; font-size: 0.9rem; }
   .header-right { gap: 10px; }
   .btn { padding: 8px 16px; font-size: 0.9rem; }
-  .classes-grid, .fee-grid { grid-template-columns: repeat(2, 1fr); }
+  .fee-grid { grid-template-columns: repeat(2, 1fr); }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
