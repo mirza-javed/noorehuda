@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile Menu Toggle
+
+  // ─── Mobile Menu Toggle ───
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
+  const hamburgerClose = document.querySelector('.hamburger-close');
 
   if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
@@ -9,10 +11,83 @@ document.addEventListener('DOMContentLoaded', () => {
       const isExpanded = navMenu.classList.contains('active');
       hamburger.setAttribute('aria-expanded', isExpanded);
     });
+
+    // Close button inside mobile menu
+    if (hamburgerClose) {
+      hamburgerClose.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    // Close menu when a nav link is clicked
+    navMenu.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
 
+  // ─── Active Navigation Indicator ───
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-links a');
 
-  // Lightbox for Classes
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPage || 
+        (currentPage === '' && href === 'index.html') ||
+        (currentPage === 'index.html' && href === 'index.html')) {
+      // Only mark as active if it's a page link (not an anchor)
+      if (!href.startsWith('#') && !href.includes('#')) {
+        link.classList.add('active');
+      }
+    }
+    if (href === 'about.html' && currentPage === 'about.html') {
+      link.classList.add('active');
+    }
+    if (href === 'droos.html' && currentPage === 'droos.html') {
+      link.classList.add('active');
+    }
+  });
+
+  // ─── Scroll-Triggered Animations ───
+  const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .stagger-children');
+
+  if (scrollElements.length > 0) {
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          scrollObserver.unobserve(entry.target); // Animate only once
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    scrollElements.forEach(el => scrollObserver.observe(el));
+  }
+
+  // ─── Scroll-to-Top Button ───
+  const scrollTopBtn = document.querySelector('.scroll-top');
+
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ─── Lightbox for Classes ───
   const classCards = document.querySelectorAll('.class-card');
   const lightbox = document.getElementById('lightbox');
   
@@ -24,7 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxClose = document.querySelector('.lightbox-close');
 
     classCards.forEach(card => {
-      card.addEventListener('click', () => {
+      card.addEventListener('click', (e) => {
+        // Don't open lightbox if clicking a button/link inside the card
+        if (e.target.closest('.btn') || e.target.closest('a')) return;
+
         const img = card.querySelector('.class-img').src;
         const title = card.querySelector('.class-title').textContent;
         const arabic = card.querySelector('.class-arabic').textContent;
@@ -51,9 +129,16 @@ document.addEventListener('DOMContentLoaded', () => {
         closeLightbox();
       }
     });
+
+    // Close lightbox on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
   }
 
-  // Contact Form Submission
+  // ─── Contact Form Submission ───
   const contactForm = document.getElementById('contactForm');
   
   if (contactForm) {
